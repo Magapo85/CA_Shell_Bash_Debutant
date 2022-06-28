@@ -1,3 +1,4 @@
-total 0
+total 4
 -rw-r--r-- 1 magapo magapo  33 Jun 28 13:45 Hello
--rw-r--r-- 1 magapo magapo 376 Jun 28 13:53 Variable
+-rw-r--r-- 1 magapo magapo 938 Jun 28 15:42 Variable
+-rw-r--r-- 1 magapo magapo 175 Jun 28 15:28 list_2022-06-28.txt
