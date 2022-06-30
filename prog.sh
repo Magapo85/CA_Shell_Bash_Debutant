@@ -3,8 +3,13 @@ function File {
     # think you are inside the file
     # Change Here
     echo $#
-
-    for ((i=1;i<=$#;i++)); do echo str='$i' "longueur de l'argument " $i " : " ${#str}; done
+    echo $*
+    str=$*
+    for ((i=1;i<=$#;i++)); do 
+         echo str[i] 
+         echo $str " longueur de l'argument " $i " : " `expr length "$str"`;
+         #shift
+    done
     echo "fin"
 }
 
