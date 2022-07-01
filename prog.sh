@@ -4,11 +4,14 @@ function File {
     # Change Here
     echo $#
     echo $*
-    str=$*
-    for ((i=1;i<=$#;i++)); do 
-         echo str[i] 
+    #str=$*
+    i=1
+    for str in $*; # ((i=1;i<=$#;i++));
+    do 
+         #echo str[i] 
          echo $str " longueur de l'argument " $i " : " `expr length "$str"`;
          #shift
+         i=$((i+1))
     done
     echo "fin"
 }
