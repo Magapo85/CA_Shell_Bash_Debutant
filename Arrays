@@ -1,17 +1,29 @@
 #!/bin/bash
 my_array=("apple tea" "banana" "Fruit Basket" "orange")
-for ELEMENT in ${my_array[@]}
-do
-echo File: $ELEMENT.
-done
-echo ${#my_array}
+my_array_2=([6]=apple [2]=banana [4]="Fruit Basket" [0]=orange)
 echo ${my_array[*]}
-my_array[2]="abricot" 
-echo ${#my_array}
-echo ${my_array[*]}
-i=0
-for ELEMENT in ${my_array[@]}
+echo ${#my_array[*]}
+echo ${my_array_2[@]}
+echo ${#my_array_2[@]}
+for ((ELEMENT=0;ELEMENT<=$((${#my_array[@]}-1));ELEMENT++))
 do
-echo "Data ${my_array[$i]} : $ELEMENT."
-i=$((i+1))
+echo "Data $ELEMENT : ${my_array[ELEMENT]}".
 done
+my_array[2]="abricot"
+for ELEMENT in ${!my_array_2[@]}
+do
+printf 'Data %s : %s\n' "$ELEMENT" "${my_array_2[ELEMENT]}"
+done
+NAMES=( John Eric Jessica )
+# write your code here
+NUMBERS=(1 2 3)
+STRINGS=("hello" "world")
+NumberOfNames=${#NAMES[@]}
+second_name=${NAMES[1]}
+fourth_name='Vladimir'
+echo ${NUMBERS[*]}
+echo ${NAMES[*]}
+echo ${STRINGS[*]}
+echo $NumberOfNames
+echo $second_name
+echo $fourth_name

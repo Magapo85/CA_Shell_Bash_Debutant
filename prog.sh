@@ -1,16 +1,11 @@
 #!/bin/bash
 function File {
-    # think you are inside the file
-    # Change Here
-    echo $#
-    echo $*
-    #str=$*
+    echo "Le nombre d'argument est : " $#
+    echo "Les arguments sont : " $*
     i=1
-    for str in $*; # ((i=1;i<=$#;i++));
-    do 
-         #echo str[i] 
-         echo $str " longueur de l'argument " $i " : " `expr length "$str"`;
-         #shift
+    for str in $*;
+    do
+         echo "l'argument " $i " est " $str " et sa longueur est : " `expr length "$str"`;
          i=$((i+1))
     done
     echo "fin"
@@ -22,7 +17,5 @@ if [ ! $# -lt 1 ]; then
     exit 0
 fi
 
-
-# change here
 # here you can pass the arguments
-#bash prog.sh Shell is fun
+# bash prog.sh Shell is fun
