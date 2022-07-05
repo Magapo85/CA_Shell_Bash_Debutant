@@ -1,4 +1,8 @@
 #!/bin/bash
+ar=(10 30 44 44 69 12 11)
+IFS=$'\n'
+echo "${ar[*]}" | sort -nr | head -n1
+
 array=(23 45 34 1 2 3)
 #To refer to a particular value (e.g. : to refer 3rd value)
 echo ${array[2]}
@@ -12,3 +16,15 @@ echo ${#array[@]}
 a=(3 5 8 10 6)
 b=(6 5 4 12)
 c=(14 7 5 7)
+quantity=(${#a[@]} ${#b[@]} ${#c[@]})
+echo ${a[@]}
+echo ${b[@]}
+echo ${c[@]}
+echo ${quantity[@]}
+
+#trouver l'array la plus longue
+max=${quantity[0]}
+for n in "${quantity[@]}" ; do
+    ((n > max)) && max=$n
+done
+echo $max
