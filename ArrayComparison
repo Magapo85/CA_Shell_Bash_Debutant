@@ -3,6 +3,11 @@ ar=(10 30 44 44 69 12 11)
 IFS=$'\n'
 echo "${ar[*]}" | sort -nr | head -n1
 
+array=('d1=(v1 v2 v3)' 'd2=(v1 v2 v3)')
+for elt in "${array[@]}";do eval $elt;done
+echo "d1 ${#d1[@]} ${d1[@]}"
+echo "d2 ${#d2[@]} ${d2[@]}"
+
 array=(23 45 34 1 2 3)
 #To refer to a particular value (e.g. : to refer 3rd value)
 echo ${array[2]}
@@ -17,14 +22,49 @@ a=(3 5 8 10 6)
 b=(6 5 4 12)
 c=(14 7 5 7)
 quantity=(${#a[@]} ${#b[@]} ${#c[@]})
+all=(${a[@]} ${b[@]} ${c[@]})
 echo ${a[@]}
 echo ${b[@]}
 echo ${c[@]}
 echo ${quantity[@]}
+echo ${all[@]}
 
+
+echo premiere methode
 #trouver l'array la plus longue
 max=${quantity[0]}
 for n in "${quantity[@]}" ; do
     ((n > max)) && max=$n
 done
 echo $max
+Array3=()
+for i in ${a[@]}; do
+    for j in ${b[@]}; do
+        if [ $i -eq $j ]; then
+		for k in ${c[@]}; do
+        		if [ $i -eq $k ]; then
+				echo $i
+				Array3+=($i)
+    		                break
+			fi
+		done
+                break
+	fi
+    done
+    #[[ -n $skip ]] || Array3+=("$i")
+done
+#declare -p Array3
+echo ${Array3[@]}
+
+echo deuxieme methode plus rapide
+d=($(echo "${a[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+e=($(echo "${b[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+f=($(echo "${c[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+
+echo ${d[@]}
+echo ${e[@]}
+echo ${f[@]}
+
+g=($(echo "${d[@]}" "${e[@]}" | tr ' ' '\n' | sort | uniq -d | tr '\n' ' '))
+h=($(echo "${g[@]}" "${f[@]}" | tr ' ' '\n' | sort | uniq -d | tr '\n' ' '))
+echo ${h[@]}
