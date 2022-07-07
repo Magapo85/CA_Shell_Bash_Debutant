@@ -1,0 +1,27 @@
+#!/bin/bash
+# traptest.sh
+# notice you cannot make Ctrl-C work in this shell, 
+# try with your local one, also remeber to chmod +x 
+# your local .sh file so you can execute it!
+#all signal types : kill -l
+#SIGINT: user sends an interrupt signal (Ctrl + C)
+
+#SIGQUIT: user sends a quit signal (Ctrl + D)
+
+#SIGFPE: attempted an illegal mathematical operation
+
+function booh {
+	echo "Booh!"
+}
+#trap booh 2 15
+trap booh SIGINT SIGTERM
+echo "it's going to run until you hit Ctrl+Z"
+echo "hit Ctrl+C to be blown away!"
+
+while true        
+do
+    sleep 60       
+done
+
+#one of the common usage of trap is to do cleanup temporary files:
+trap "rm -f folder; exit" 2

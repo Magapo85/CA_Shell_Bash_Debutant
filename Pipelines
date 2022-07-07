@@ -1,0 +1,19 @@
+#!/bin/bash
+#|& which is a short hand for 2>&1 |
+#the number of entries in a directory
+ls / | wc -l
+#only the first 10 results
+ls / | head
+#Grep searches for patterns in each file
+ls / | grep "i" # This will grab any line/file that has a matching pattern in it
+#print the number of processors based on the information in the cpuinfo file (/proc/cpuinfo)
+cat /proc/cpuinfo | grep "processor" | wc -l 
+#Process substitution allows a process’s input or output to be referred to using a filename
+#It has two forms: output <(cmd), and input >(cmd).
+sort file1 > sorted_file1
+sort file2 > sorted_file2
+diff sorted_file1 sorted_file2
+# equivaut a
+diff <(sort file1) <(sort file2)
+echo "Hello, world!" | tee /tmp/hello.txt
+echo "Hello, world!" | tee >(tr '[:upper:]' '[:lower:]' > /tmp/hello.txt)
