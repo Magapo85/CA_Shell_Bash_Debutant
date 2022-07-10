@@ -1,2 +1,16 @@
 #!/bin/bash
 echo 'Hello World!'
+:<<'CommentBloc'
+- pwd   Donne le chemin du répertoire courant (current path)
+- ls �  Liste le contenu d’un dossier
+- cd �  Permet d’accéder à un dossier
+- rm �  Supprime un fichier (à utiliser avec précaution)
+- mv �  D�place un fichier
+- cp    Copie un ou plusieurs fichiers
+- man   Manuel
+- cat � Affiche un fichier (et plus si affinités)
+- more  Permet de lire un fichier
+- echo  Affiche une entrée dans la sortie standard
+- clear Efface l’écran du terminal
+- chmod Permet d’éditer les droits d’un fichier
+CommentBloc
